@@ -17,7 +17,7 @@ module OmniAuth
       }
 
       option :authorize_params, {
-        :scope => 'user.read read:site write:site'
+        :scope => 'read:site,write:site'
       }
 
       def build_access_token
