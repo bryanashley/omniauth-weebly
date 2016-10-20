@@ -6,12 +6,11 @@ require 'omniauth/weebly/version'
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-weebly"
   spec.version       = Omniauth::Weebly::VERSION
-  spec.authors       = ["bryan"]
-  spec.email         = ["bryan@weebly.com"]
+  spec.authors       = ["bryanashley"]
+  spec.email         = ["bryan.ashley@bashley.net"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{OmniAuth strategy for Weebly OAuth}
+  spec.description   = %q{OmniAuth strategy for Weebly OAuth}
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
