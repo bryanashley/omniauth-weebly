@@ -50,7 +50,6 @@ Here's an example auth hash, available in `request.env['omniauth.auth']`:
   :email => "bryan@weebly.com",
   :language => "en"
   :name => "Bryan Ashley"
-  }
 }
 
 ```
