@@ -47,9 +47,11 @@ Here's an example auth hash, available in `request.env['omniauth.auth']`:
 {
   :provider => "weebly",
   :uid => "1111111111",
-  :email => "bryan@weebly.com",
-  :language => "en"
-  :name => "Bryan Ashley"
+  :info => {
+  	:email => "bryan@weebly.com",
+  	:language => "en"
+  	:name => "Bryan Ashley"
+  }
 }
 
 ```
