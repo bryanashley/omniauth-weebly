@@ -1,16 +1,12 @@
-# Omniauth::Weebly
+# Weebly OmniAuth Strategy
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omniauth/weebly`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem provides a simple way to authenticate to Weebly Web API using OmniAuth with OAuth2.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'omniauth-weebly'
-```
+    gem 'omniauth-weebly'
 
 And then execute:
 
@@ -22,20 +18,47 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You'll need to register an app on Weebly, you can do this here - https://weebly.com/developer-admin
 
-## Development
+Usage of the gem is very similar to other OmniAuth strategies.
+You'll need to add your app credentials to `config/initializers/omniauth.rb`:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :weebly, 'app_id', 'app_secret', scope: 'read:site,write:site'
+end
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Please replace the example `scope` provided with your own.
+Read more about scopes here: https://dev.weebly.com/about-rest-apis.html
+
+Or with Devise in `config/initializers/devise.rb`:
+
+```ruby
+config.omniauth :weebly, 'app_id', 'app_secret', scope: 'read:site,write:site'
+```
+
+## Auth Hash Schema
+
+Here's an example auth hash, available in `request.env['omniauth.auth']`:
+
+
+```ruby
+{
+  :provider => "weebly",
+  :uid => "1111111111",
+  :email => "bryan@weebly.com",
+  :language => "en"
+  :name => "Bryan Ashley"
+  }
+}
+
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omniauth-weebly. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
