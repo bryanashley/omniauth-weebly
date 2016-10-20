@@ -48,8 +48,8 @@ module OmniAuth
         #
         #@raw_info ||= access_token.get('/ap/user/profile').parsed
 
-        url = "/user"
-        params = {:params => { :access_token => access_token.token}}
+        url = "/v1/user"
+        params = {:headers => {'X-Weebly-Access-Token' => access_token.token}}
         @raw_info ||= access_token.client.request(:get, url, params).parsed
       end
     end
